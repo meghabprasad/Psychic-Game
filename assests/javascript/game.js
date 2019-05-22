@@ -18,13 +18,38 @@ var correctLetter;
 var userLetter;
 var wins = 0;
 var loses = 0;
-var guessesLeft = 0;
+var guessesLeft = 5;
 var guessesMade = [];
 
+function generateLetter(){
+    correctLetter = letterOptions[Math.floor(Math.random() * letterOptions.length)];
+}
 
+generateLetter();
+console.log("The correct letter is: " + correctLetter);
 
 document.onkeyup = function (event){
     userLetter = event.key;
     console.log(userLetter);
+    if (userLetter === correctLetter){
+        console.log("Winner!");
+        wins++;
+        console.log("wins: "+ wins);
+        console.log("loses: "+ loses);
+        guessesLeft--;
+        console.log("guessesLeft: "+ guessesLeft);
+        guessesMade.push(userLetter);
+        console.log("guessesMade: "+ guessesMade);
+    }else {
+        console.log("Loser!");
+        loses++;
+        console.log("loses: "+ loses);
+        console.log("wins: "+ wins);
+        guessesLeft--;
+        console.log("guessesLeft: "+ guessesLeft);
+        guessesMade.push(userLetter);
+        console.log("guessesMade: "+ guessesMade);
+    }
 }
+
 
