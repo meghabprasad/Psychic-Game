@@ -37,24 +37,32 @@ document.onkeyup = function (event){
         wins++;
         document.getElementById("wins-display").textContent = wins;
         console.log("wins: "+ wins);
-        guessesLeft = 5;
-        console.log("guessesLeft: "+ guessesLeft);
-        document.getElementById("guessesLeft").textContent = guessesLeft;
-        guessesMade = [];
-        console.log("guessesMade: "+ guessesMade);
+        guessesMade.push(userLetter);
         document.getElementById("guesses-display").textContent = guessesMade;
+        console.log("guessesMade: "+ guessesMade);
+        // guessesLeft = 5;
+        // console.log("guessesLeft: "+ guessesLeft);
+        // document.getElementById("guessesLeft").textContent = guessesLeft;
+        guessesMade = [];
+        guessesLeft = 5;
+
         generateLetter();
     }else {
         if (guessesLeft === 0){
             loses++;
             document.getElementById("loses-display").textContent = loses;
             console.log("You used up all your tries. Try to guess another letter!");
-            guessesLeft = 5;
+            
             console.log("guessesLeft: "+ guessesLeft);
             document.getElementById("guessesLeft").textContent = guessesLeft;
-            guessesMade = [];
+            guessesLeft = 5;
+            
+            guessesMade.push(userLetter);
             console.log("guessesMade: "+ guessesMade);
             document.getElementById("guesses-display").textContent = guessesMade;
+            guessesMade = [];
+            
+            
             generateLetter();
         }
         else{
@@ -65,6 +73,7 @@ document.onkeyup = function (event){
             console.log("guessesLeft: "+ guessesLeft);
             guessesMade.push(userLetter);
             console.log("guessesMade: "+ guessesMade);
+            document.getElementById("guesses-display").textContent = guessesMade;
         }
     }
 }
