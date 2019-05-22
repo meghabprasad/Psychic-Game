@@ -59,7 +59,6 @@ document.onkeyup = function (event){
         }
         else{
             console.log("Loser!");
-            loses++;
             console.log("loses: "+ loses);
             console.log("wins: "+ wins);
             guessesLeft--;
