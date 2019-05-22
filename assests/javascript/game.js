@@ -48,7 +48,7 @@ document.onkeyup = function (event){
 
         generateLetter();
     }else {
-        if (guessesLeft === 0){
+        if (guessesLeft === 1){
             loses++;
             document.getElementById("loses-display").textContent = loses;
             console.log("You used up all your tries. Try to guess another letter!");
@@ -71,6 +71,7 @@ document.onkeyup = function (event){
             console.log("wins: "+ wins);
             guessesLeft--;
             console.log("guessesLeft: "+ guessesLeft);
+            document.getElementById("guessesLeft").textContent = guessesLeft;
             guessesMade.push(userLetter);
             console.log("guessesMade: "+ guessesMade);
             document.getElementById("guesses-display").textContent = guessesMade;
