@@ -23,10 +23,11 @@ var guessesMade = [];
 
 function generateLetter(){
     correctLetter = letterOptions[Math.floor(Math.random() * letterOptions.length)];
+    console.log("The correct letter is: " + correctLetter);
 }
 
 generateLetter();
-console.log("The correct letter is: " + correctLetter);
+
 
 document.onkeyup = function (event){
     userLetter = event.key;
@@ -34,21 +35,38 @@ document.onkeyup = function (event){
     if (userLetter === correctLetter){
         console.log("Winner!");
         wins++;
+        document.getElementById("wins-display").textContent = wins;
         console.log("wins: "+ wins);
-        console.log("loses: "+ loses);
-        guessesLeft--;
+        guessesLeft = 5;
         console.log("guessesLeft: "+ guessesLeft);
-        guessesMade.push(userLetter);
+        document.getElementById("guessesLeft").textContent = guessesLeft;
+        guessesMade = [];
         console.log("guessesMade: "+ guessesMade);
+        document.getElementById("guesses-display").textContent = guessesMade;
+        generateLetter();
     }else {
-        console.log("Loser!");
-        loses++;
-        console.log("loses: "+ loses);
-        console.log("wins: "+ wins);
-        guessesLeft--;
-        console.log("guessesLeft: "+ guessesLeft);
-        guessesMade.push(userLetter);
-        console.log("guessesMade: "+ guessesMade);
+        if (guessesLeft === 0){
+            loses++;
+            document.getElementById("loses-display").textContent = loses;
+            console.log("You used up all your tries. Try to guess another letter!");
+            guessesLeft = 5;
+            console.log("guessesLeft: "+ guessesLeft);
+            document.getElementById("guessesLeft").textContent = guessesLeft;
+            guessesMade = [];
+            console.log("guessesMade: "+ guessesMade);
+            document.getElementById("guesses-display").textContent = guessesMade;
+            generateLetter();
+        }
+        else{
+            console.log("Loser!");
+            loses++;
+            console.log("loses: "+ loses);
+            console.log("wins: "+ wins);
+            guessesLeft--;
+            console.log("guessesLeft: "+ guessesLeft);
+            guessesMade.push(userLetter);
+            console.log("guessesMade: "+ guessesMade);
+        }
     }
 }
 
