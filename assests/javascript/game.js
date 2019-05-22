@@ -15,7 +15,16 @@
 
 var letterOptions = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var correctLetter;
+var userLetter;
 var wins = 0;
 var loses = 0;
 var guessesLeft = 0;
 var guessesMade = [];
+
+
+
+document.onkeyup = function (event){
+    userLetter = event.key;
+    console.log(userLetter);
+}
+
